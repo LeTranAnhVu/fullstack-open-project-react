@@ -8,10 +8,6 @@ const RestaurantList = () => {
         <section className="restaurant-list">
             <Row>
                 <Col md="4"><Restaurant/></Col>
-                <Col md="4"><Restaurant/></Col>
-                <Col md="4"><Restaurant/></Col>
-                <Col md="4"><Restaurant/></Col>
-                <Col md="4"><Restaurant/></Col>
             </Row>
         </section>
     );
