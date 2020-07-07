@@ -5,3 +5,4 @@
 |:----:|:-----|:-----|
 |7.7| 0.5 | init project |
 || 4 | make ui done |
+|| 4 | apply some style |
