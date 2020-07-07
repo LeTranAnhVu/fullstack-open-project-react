@@ -1,28 +1,9 @@
-import React, {useState, useEffect, useRef} from "react";
+import React, {useRef} from "react";
 import "./Restaurant.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import useHoverDescription from "../hooks/useHoverDescription";
 
-const Restaurant = () => {
-    const restaurant = {
-        "city": "Helsinki",
-        "currency": "EUR",
-        "delivery_price": 390,
-        "description": "Japanilaista ramenia parhaimmillaan",
-        "image": "https://prod-wolt-venue-images-cdn.wolt.com/5d108aa82e757db3f4946ca9/d88ebd36611a5e56bfc6a60264fe3f81",
-        "location": [
-            24.941786527633663,
-            60.169934599421396
-        ],
-        "name": "Momotoko Citycenter",
-        "online": true,
-        "tags": [
-            "ramen",
-            "risotto"
-        ],
-        "blurhash": "j2DUFG8jbu8AXuLIT5Tt0B01R2;;",
-    };
-
+const Restaurant = ({restaurant}) => {
     const descEl = useRef(null);
     const [descHeight, onHoverOverlay, onLeaveOverlay] = useHoverDescription(descEl);
 
@@ -41,7 +22,6 @@ const Restaurant = () => {
         }
         return <span className="online-status off"/>
     };
-
 
     return (
         <div className="restaurant">
@@ -63,8 +43,6 @@ const Restaurant = () => {
                 <FontAwesomeIcon className="city-icon" icon={['fas', 'map-marker-alt']}/>
                 {restaurant.city}</p>
             {tags()}
-
-
         </div>
     );
 };

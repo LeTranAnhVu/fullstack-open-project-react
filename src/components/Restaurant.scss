@@ -8,8 +8,7 @@
   .online-status {
     position: absolute;
     left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 5px;
     display: block;
     width: 15px;
     height: 15px;
@@ -99,7 +98,7 @@
     }
 
     &:hover {
-      box-shadow: 3px 3px 3px #ccc, 7px 7px 3px #ddd;
+      box-shadow: 2px 2px 3px #ccc, 4px 4px 2px #ddd;
       transform: perspective(500px) translateZ(10px);
 
     }

@@ -1,3 +1,9 @@
-.restaurant-list{
-    margin-top: 30px;
+.restaurant-list {
+  margin-top: 30px;
+
+  .loading-group {
+      width: 100%;
+      text-align: center;
+      padding-top: 50px;
+  }
 }
