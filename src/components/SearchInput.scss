@@ -1,5 +1,9 @@
 .search-input {
   position: relative;
+  input[type="text"]{
+    padding: 5px 10px;
+    text-align: center;
+  }
   .search-icon {
     position: absolute;
     right: 10px;

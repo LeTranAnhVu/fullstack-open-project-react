@@ -1,16 +1,18 @@
-import {FETCH_RESTAURANTS} from "./types";
+import {FETCH_RESTAURANTS, SORT_RESTAURANTS} from "./types";
 import api from "../apis";
 
 
-export const fetchRestaurants = () => {
-    return async (dispatch) => {
-        const res = await api.get('/restaurants');
-        await setTimeout(()=> {
-            dispatch({
-                type: FETCH_RESTAURANTS,
-                payload: res.data
-            });
-        }, 2000);
+export const fetchRestaurants = () => async (dispatch) => {
+    const res = await api.get('/restaurants');
+    dispatch({
+        type: FETCH_RESTAURANTS,
+        payload: res.data
+    });
+};
 
-    }
+export const sortRestaurants = (status) => (dispatch) => {
+    dispatch({
+        type: SORT_RESTAURANTS,
+        payload: status
+    })
 };

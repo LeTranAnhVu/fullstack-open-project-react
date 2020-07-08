@@ -22,16 +22,16 @@ const NavbarApp = (props) => {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem>
-                            <NavLink href="/shops">Restaurants</NavLink>
+                            <NavLink href="/restaurants">Restaurants</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/about-us">About us</NavLink>
+                            <NavLink disabled href="/about-us">About us</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/jobs">Jobs</NavLink>
+                            <NavLink disabled href="/jobs">Jobs</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/contact">Contact</NavLink>
+                            <NavLink disabled href="/contact">Contact</NavLink>
                         </NavItem>
                     </Nav>
                 </Collapse>

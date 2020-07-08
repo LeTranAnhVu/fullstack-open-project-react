@@ -1,13 +1,34 @@
-import {FETCH_RESTAURANTS} from "../actions/types";
+import {FETCH_RESTAURANTS, SORT_RESTAURANTS} from "../actions/types";
 
 const DEFAULT_STATE = [];
-const restaurantReducer = (state = DEFAULT_STATE, action) => {
+
+const sortBy = (status, restaurants) => {
+    //acs
+    if (status === 1) {
+        restaurants.sort((resA, resB) => {
+            return resA.name > resB.name ? 1 : (resA.name < resB.name ? -1 : 0)
+        })
+    } else if (status === 2) {
+        //desc
+        restaurants.sort((resA, resB) => {
+            return resA.name > resB.name ? -1 : (resA.name < resB.name ? 1 : 0)
+        })
+
+    }
+    return restaurants;
+};
+const restaurantReducer = (restaurants = DEFAULT_STATE, action) => {
     switch (action.type) {
         case FETCH_RESTAURANTS : {
             return [...action.payload];
         }
+        case SORT_RESTAURANTS: {
+            let res = sortBy(action.payload, [...restaurants]);
+            console.log('call here', res);
+            return res;
+        }
         default: {
-            return state;
+            return restaurants;
         }
     }
 };
