@@ -54,16 +54,36 @@
     position: relative;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 3px 4px 7px #ccc;
+    box-shadow: 2px 2px 7px #ccc;
     transition: all .2s ease;
+    height: 280px;
     transform: perspective(500px) translateZ(0);
 
     .image {
       width: 100%;
-      height: 280px;
+      height: 100%;
       object-fit: cover;
+      &.disable {
+        width: 0;
+        height: 0;
+      }
+    }
 
-
+    .blurhash {
+      &::before {
+        display: block;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        transform-origin: top left;
+        background: linear-gradient(to right, #ffffff03, #848181c4, #ffffff03);
+        background-size: 300% 100%;
+        animation: loading-movement 4s infinite linear;
+      }
     }
 
     .overlay {
@@ -100,10 +120,16 @@
     &:hover {
       box-shadow: 2px 2px 3px #ccc, 4px 4px 2px #ddd;
       transform: perspective(500px) translateZ(10px);
-
     }
+  }
+}
 
+@keyframes loading-movement {
+  0% {
+    background-position: 200% 0;
   }
 
-
+  100% {
+    background-position: -100% 0;
+  }
 }

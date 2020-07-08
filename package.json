@@ -13,26 +13,29 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.19.2",
+    "blurhash": "^1.1.3",
     "bootstrap": "^4.4.1",
     "concurrently": "^5.1.0",
     "json-server": "^0.15.1",
     "node-sass": "^4.13.1",
     "react": "^16.12.0",
+    "react-blurhash": "^0.1.2",
     "react-dom": "^16.12.0",
     "react-redux": "^7.1.3",
-    "react-scripts": "^3.4.1",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.4.1",
     "reactstrap": "^8.4.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "client:start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "mock:api": "json-server --watch DB/restaurants.json --port 4000",
-    "app:start": "concurrently \"npm run start\"  \"npm run mock:api\" "
+    "start": "concurrently \"npm run client:start\"  \"npm run mock:api\" "
   },
   "eslintConfig": {
     "extends": "react-app"

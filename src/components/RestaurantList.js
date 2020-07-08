@@ -32,6 +32,7 @@ const RestaurantList = () => {
                 <Spinner type="grow" color="success" />
                 <Spinner type="grow" color="danger" />
                 <Spinner type="grow" color="warning" />
+                <p>Loading . . . </p>
             </div>
         )
 
