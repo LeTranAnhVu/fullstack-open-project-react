@@ -3,6 +3,7 @@ import "./MainContent.scss";
 import {Route, Switch} from "react-router-dom";
 import {Redirect} from 'react-router'
 import RestaurantsPage from "../pages/RestaurantsPage";
+import SortButton from "./SortButton";
 
 const MainContent = () => {
     return (

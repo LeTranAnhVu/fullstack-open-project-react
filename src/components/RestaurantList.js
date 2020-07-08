@@ -22,8 +22,10 @@ const RestaurantList = () => {
 
     const buildList = () => {
         if(restaurants && restaurants.length > 0) {
-            return restaurants.map((restaurant, index) => {
-                return <Col key={index} md="4"><Restaurant restaurant={restaurant}/></Col>;
+            return restaurants.map((restaurant) => {
+                return (<Col key={restaurant.id} md="4">
+                    <Restaurant restaurant={restaurant}/>
+                </Col>);
             });
         }
         return (

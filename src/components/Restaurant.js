@@ -2,6 +2,7 @@ import React, {useRef, useState} from "react";
 import "./Restaurant.scss";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {Blurhash} from "react-blurhash";
+import {useSpring, animated, config} from "react-spring";
 // hooks
 import useHoverDescription from "../hooks/useHoverDescription";
 
@@ -10,6 +11,8 @@ const Restaurant = ({restaurant}) => {
     const [descHeight, onHoverOverlay, onLeaveOverlay] = useHoverDescription(descEl);
     const [isLoadedImage, setIsLoadedImage] = useState(false);
 
+    // animation
+    const fadeinAttr = useSpring({from: {opacity: 0}, to: {opacity: 1}, config: config.slow});
     const tags = () => {
         return (
             <div>
@@ -26,6 +29,7 @@ const Restaurant = ({restaurant}) => {
         return <span className="online-status off"/>
     };
 
+
     const loadingBlurHash = () => {
         return (
             <Blurhash
@@ -40,11 +44,12 @@ const Restaurant = ({restaurant}) => {
     const onLoadedImage = () => {
         setTimeout(() => {
             setIsLoadedImage(true);
-        }, 1500);
+        }, 800);
     };
 
+
     return (
-        <div className="restaurant">
+        <animated.div className="restaurant" key={restaurant.id} style={fadeinAttr}>
             <div onMouseEnter={onHoverOverlay}
                  onMouseLeave={onLeaveOverlay}
                  className="image-wrapper">
@@ -65,7 +70,7 @@ const Restaurant = ({restaurant}) => {
                 <FontAwesomeIcon className="city-icon" icon={['fas', 'map-marker-alt']}/>
                 {restaurant.city}</p>
             {tags()}
-        </div>
+        </animated.div>
     );
 };
 

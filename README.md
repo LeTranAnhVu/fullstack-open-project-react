@@ -9,3 +9,4 @@
 || 3 | add style, fetch data , axios, setup redux ,store restaurant to store  |
 || 2 | sort data get from redux, with sort button|
 || 3 | add blurhash, optimize image loading|
+|| 3.5 | add animation for restaurant cart using react spring|
