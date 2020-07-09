@@ -1,12 +1,21 @@
 import {useState, useEffect} from 'react';
+import useWindowSize from "./useWindowResize";
 
 export default (descEl) => {
-    const [descHeight, setDescHeight] = useState(null);
+    const [descHeight, setDescHeight] = useState(0);
     const [originalDesHeight, setOriginalDesHeight] = useState(null);
+    const size = useWindowSize();
+
     useEffect(() => {
-        setOriginalDesHeight(descEl.current.offsetHeight);
-        setDescHeight(0);
-    }, []);
+        descEl.current.setAttribute('style', {height: 'auto'});
+        setOriginalDesHeight(descEl.current.clientHeight);
+        const timeout = setTimeout(() => {
+            descEl.current.style.height = 0
+        },500);
+        return () => {
+            return clearTimeout(timeout);
+        }
+    },[size[0], size[1]]);
 
     const onHoverOverlay = () => {
         setDescHeight(originalDesHeight);

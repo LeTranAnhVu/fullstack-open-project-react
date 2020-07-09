@@ -24,7 +24,6 @@ const restaurantReducer = (restaurants = DEFAULT_STATE, action) => {
         }
         case SORT_RESTAURANTS: {
             let res = sortBy(action.payload, [...restaurants]);
-            console.log('call here', res);
             return res;
         }
         default: {

@@ -10,3 +10,4 @@
 || 2 | sort data get from redux, with sort button|
 || 3 | add blurhash, optimize image loading|
 || 3.5 | add animation for restaurant cart using react spring|
+|| 6 | fix bug, refactor code, connect with firebase, create page detail, ready to do backend|

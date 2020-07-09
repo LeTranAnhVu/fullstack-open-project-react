@@ -18,7 +18,7 @@ const NavbarApp = (props) => {
     return (
         <Navbar color="dark" dark expand="sm">
             <Container>
-                <NavbarBrand href="/">Wolt</NavbarBrand>
+                <NavbarBrand href="/">Demo</NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto" navbar>

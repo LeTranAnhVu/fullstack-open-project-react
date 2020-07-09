@@ -1,5 +1,6 @@
 import React from "react";
-import {BrowserRouter} from "react-router-dom";
+import {Router} from "react-router-dom";
+import history from "../helpers/history";
 import MainContent from "./MainContent";
 import NavbarApp from "./NavbarApp";
 
@@ -13,10 +14,10 @@ library.add(faSearch, faMapMarkerAlt, faSort, faSortUp, faSortDown);
 const App = () => {
     return (
         <div>
-            <BrowserRouter>
+            <Router history={history}>
                 <NavbarApp/>
                 <MainContent/>
-            </BrowserRouter>
+            </Router>
         </div>
     )
 };

@@ -1,15 +1,18 @@
 import {FETCH_RESTAURANTS, SORT_RESTAURANTS} from "./types";
-import api from "../apis";
-import uuidV1 from "uuid/v1";
+
+import {restaurantsRef} from '../firebase'
 
 
 export const fetchRestaurants = () => async (dispatch) => {
-    const res = await api.get('/restaurants');
-    const formattedData = res.data.map((restaurant) => ({...restaurant, id: uuidV1()}));
-    dispatch({
-        type: FETCH_RESTAURANTS,
-        payload: formattedData
+    restaurantsRef.on("value", snapshot => {
+        const restaurants = snapshot.val();
+        dispatch({
+            type: FETCH_RESTAURANTS,
+            payload: restaurants
+        });
+
     });
+
 };
 
 export const sortRestaurants = (status) => (dispatch) => {

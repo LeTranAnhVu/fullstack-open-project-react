@@ -9,9 +9,11 @@ import {Button} from "reactstrap";
 const SortButton = () => {
     const dispatch = useDispatch();
     const [status, setStatus] = useState(0);
+
     useEffect(() => {
         dispatch(sortRestaurants(status));
     }, [status]);
+
     const onChangeSortStatus = () => {
         setStatus(status === 2 ? 1 : (status + 1));
     };

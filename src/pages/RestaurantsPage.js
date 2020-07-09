@@ -11,5 +11,5 @@ const RestaurantsPage = () => {
             <RestaurantList/>
         </Container>
     )
-}
+};
 export default RestaurantsPage;
