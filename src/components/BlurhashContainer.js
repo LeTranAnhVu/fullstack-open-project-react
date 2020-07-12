@@ -1,8 +1,12 @@
 import React from 'react';
 import {Blurhash} from "react-blurhash";
+import { isBlurhashValid } from "blurhash";
 
 
 const BlurhashContainer = ({blurhash, w, h, rx, ry, p}) => {
+    if (!isBlurhashValid(blurhash).result ){
+        blurhash = 'UUKJMXv|x]oz0gtRM{V@AHRQwvxZXSs9s;o0'
+    }
     return (
         <Blurhash
             className="blurhash"
