@@ -1,0 +1,10 @@
+
+.app-pagination {
+  display: flex;
+  &.right .app-pagination-nav {
+    margin-left: auto;
+  }
+  &.center .app-pagination-nav {
+    margin: auto;
+  }
+}

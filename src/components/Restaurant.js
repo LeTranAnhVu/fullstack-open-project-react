@@ -64,6 +64,13 @@ const Restaurant = ({ restaurant }) => {
     history.push(`restaurants/${restaurant.id}`);
   };
 
+  const shortenText = (text, wordNo = 200) => {
+    const tParsers = text.split(' ');
+    let formatedText = (tParsers.length > 0) ? tParsers.slice(0, wordNo).join(' ') : text;
+    formatedText += (tParsers.length > wordNo) ? '...' : '';
+    return formatedText;
+  };
+
   return (
     <animated.div className="restaurant" key={restaurant.id} style={fadeinAttr}>
       <div
@@ -91,7 +98,7 @@ const Restaurant = ({ restaurant }) => {
             style={{ height: descHeight !== null ? descHeight : "auto" }}
             className="description"
           >
-            <span>{restaurant.description}</span>
+            <span>{shortenText(restaurant.description, 10)}</span>
           </p>
         </div>
       </div>

@@ -1,6 +1,6 @@
 import {FETCH_RESTAURANTS, SORT_RESTAURANTS} from "../actions/types";
 
-const DEFAULT_STATE = [];
+const DEFAULT_STATE = null;
 
 const sortBy = (status, restaurants) => {
     //acs
@@ -20,12 +20,12 @@ const sortBy = (status, restaurants) => {
 const restaurantReducer = (restaurants = DEFAULT_STATE, action) => {
     switch (action.type) {
         case FETCH_RESTAURANTS : {
-            return [...action.payload];
+            return {...action.payload};
         }
-        case SORT_RESTAURANTS: {
-            let res = sortBy(action.payload, [...restaurants]);
-            return res;
-        }
+        // case SORT_RESTAURANTS: {
+        //     let res = sortBy(action.payload, [...restaurants]);
+        //     return res;
+        // }
         default: {
             return restaurants;
         }
