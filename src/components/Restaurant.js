@@ -2,12 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import "./Restaurant.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSpring, animated, config } from "react-spring";
-import Tag from "./Tag";
+import Tag from "./common/Tag";
 import BlurhashContainer from "./BlurhashContainer";
 
 //helper
-import currencyConverter from "../helpers/currencyConverter";
 // hooks
+import useFormattingCurrency from "../hooks/useFormattingCurrency";
 import useHoverDescription from "../hooks/useHoverDescription";
 
 import history from "../helpers/history";
@@ -18,10 +18,8 @@ const Restaurant = ({ restaurant }) => {
     descEl
   );
   const [isLoadedImage, setIsLoadedImage] = useState(false);
-  const [formattedPrice, setFormattedPrice] = useState({
-    symbol: "$",
-    amount: 0
-  });
+  const [symbol, formattedPrice ] = useFormattingCurrency(restaurant.currency, restaurant.delivery_price);
+
   const [mainImage, setMainImage] = useState({});
 
   // animation
@@ -52,11 +50,7 @@ const Restaurant = ({ restaurant }) => {
           _mainImage ? _mainImage.image : restaurant.images[0].image
         );
       }
-      const [symbol, amount] = currencyConverter(
-        restaurant.currency,
-        restaurant.delivery_price
-      );
-      setFormattedPrice({ symbol, amount });
+
     }
   }, [restaurant]);
 
@@ -90,8 +84,8 @@ const Restaurant = ({ restaurant }) => {
         )}
         <div className="overlay">
           <p className="price">
-            {formattedPrice.symbol}
-            {formattedPrice.amount}
+            {symbol}
+            {formattedPrice}
           </p>
           <p
             ref={descEl}

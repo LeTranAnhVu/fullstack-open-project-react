@@ -28,20 +28,6 @@
     position: relative;
   }
 
-  .tag {
-    color: #228be6;
-    font-size: 12px;
-
-    &:not(nth-last-of-type) {
-      margin-right: 4px;
-    }
-
-    &:hover {
-      text-decoration: underline;
-      cursor: pointer;
-    }
-  }
-
   .city {
     color: #aaa;
 

@@ -1,4 +1,20 @@
 .restaurant-detail {
+  p {
+    margin: 0;
+  }
+  .sub-image-wrapper {
+    width: 100%;
+
+    .sub-image {
+      width: 100%;
+      overflow: hidden;
+
+      &.active {
+        box-shadow: 0 0 0 1.5px #a3aab1;
+      }
+    }
+  }
+
   .main-image-wrapper {
     width: 100%;
 

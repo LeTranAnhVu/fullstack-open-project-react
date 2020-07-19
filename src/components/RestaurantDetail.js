@@ -4,6 +4,13 @@ import {Row, Col} from 'reactstrap';
 import './RestaurantDetail.scss';
 
 import OrderGroup from './common/OrderGroup';
+import SquareImage from './common/SquareImage';
+import Divide from "./common/Divide";
+import Tag from './common/Tag';
+import BlockCollapse from "./common/BlockCollapse";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+// hook
+import useFormattingCurrency from "../hooks/useFormattingCurrency";
 
 const restaurant = {
     "city": "Helsinki",
@@ -55,23 +62,46 @@ const restaurant = {
 
 const RestaurantDetail = ({restaurantId}) => {
     const [mainImage, setMainImage] = useState(null);
-    // const [subImages, setSubImages] = useState([]);
+    const [subImages, setSubImages] = useState([]);
+    const [symbol, formattedPrice, setPrice] = useFormattingCurrency('$', 0);
 
+    // PRICE
     useEffect(() => {
         if (restaurant) {
-            restaurant.images.forEach((image) => {
-                if (image.is_main) {
-                    setMainImage(image);
-                }
-            })
+            setPrice(restaurant.currency, restaurant.delivery_price)
         }
-
+    }, []);
+    // IMAGES
+    useEffect(() => {
+        if (restaurant) {
+            restaurant.images.forEach((imageObject) => {
+                if (imageObject.is_main) {
+                    setMainImage(imageObject);
+                }
+            });
+            setSubImages(restaurant.images);
+        }
     }, []);
 
+    const chooseImage = (imageObject) => {
+        setMainImage(imageObject)
+    };
 
+    const buildImageList = () => {
+        if (subImages) {
+            return subImages.map((imageObject) => {
+                return (
+                    <div className={`sub-image ${imageObject.id === mainImage.id ? 'active' : null}`}
+                         onClick={() => chooseImage(imageObject)} key={imageObject.id} style={{marginBottom: 10}}>
+                        <SquareImage url={imageObject.image.url}/>
+                    </div>
+                )
+            })
+        }
+        return null;
+    };
     return (
         <div className="restaurant-detail">
-            {cartList ? cartList.itemId : 's'}
             <Row>
                 <Col>
                     <h1>
@@ -81,24 +111,35 @@ const RestaurantDetail = ({restaurantId}) => {
             </Row>
             <Row>
                 <Col md="8">
-                    <div className="main-image-wrapper shadow">
-                        <img src={mainImage && mainImage.image.url} alt={mainImage && mainImage.image.name}/>
-                    </div>
-                    <div className="images">
-
-                    </div>
+                    <Row>
+                        <Col md="2">
+                            <div className="sub-image-wrapper">
+                                {buildImageList()}
+                            </div>
+                        </Col>
+                        <Col md="10">
+                            <div className="main-image-wrapper shadow">
+                                <img src={mainImage && mainImage.image.url} alt={mainImage && mainImage.image.name}/>
+                            </div>
+                        </Col>
+                    </Row>
                 </Col>
                 <Col md="4">
                     <div className="information-wrapper shadow">
                         <div className="price">
-                            <h2>Price: {restaurant.delivery_price}</h2>
+                            <h2>Price: {formattedPrice + ' ' + symbol}</h2>
                         </div>
-                        <div className="description">
-                            {restaurant.description}
-                        </div>
-
+                        <Divide/>
                         <OrderGroup restaurantId={restaurantId}/>
-
+                        <Divide/>
+                        <BlockCollapse>{restaurant.description}</BlockCollapse>
+                        <Divide/>
+                        <div className="location"><p><FontAwesomeIcon
+                            className="city-icon"
+                            icon={["fas", "map-marker-alt"]}
+                        /> City: {restaurant.city}</p></div>
+                        <Divide/>
+                        <div>Tags: <Tag isInline={true} tags={restaurant.tags}/></div>
                     </div>
                 </Col>
             </Row>
