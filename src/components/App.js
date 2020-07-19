@@ -4,6 +4,8 @@ import history from "../helpers/history";
 import MainContent from "./MainContent";
 import NavbarApp from "./NavbarApp";
 
+import "./App.scss";
+
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faSearch, faMapMarkerAlt, faSort, faSortUp, faSortDown} from '@fortawesome/free-solid-svg-icons';
 

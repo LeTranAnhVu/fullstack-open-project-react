@@ -22,3 +22,27 @@ export const sortRestaurants = (status) => (dispatch) => {
         payload: status
     })
 };
+
+
+// cart
+
+export const addToCart = (item) => (dispatch) => {
+    dispatch({
+        type: 'ADD_TO_CART',
+        payload: item
+    })
+};
+
+export const updateToCart = (item) => {
+    return {
+        type: 'UPDATE_TO_CART',
+        payload: item
+    }
+};
+
+export const deleteToCart = (item) => {
+    return {
+        type: 'DELETE_TO_CART',
+        payload: item
+    }
+};

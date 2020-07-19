@@ -13,7 +13,6 @@ const MainContent = () => {
                 <Route path="/restaurants" component={RestaurantsPage}/>
                 <Redirect exact from="/" to="/restaurants"/>
             </Switch>
-
         </section>
 
     );

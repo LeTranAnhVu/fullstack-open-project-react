@@ -1,0 +1,24 @@
+.change-amount-buttons {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-bottom: 15px;
+
+  .amount-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 2px;
+  }
+
+
+  p {
+    margin: 0;
+    font-size: 1.5em;
+    flex-grow: 1;
+  }
+
+  button:hover {
+    background: #343a40;
+    color: #fff;
+  }
+}

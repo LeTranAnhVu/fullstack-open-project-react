@@ -15,12 +15,12 @@ const SearchInput = ({style}) => {
         if (keyword !== prevKeyword) {
             if (isEnter) {
                 dispatch(fetchRestaurants({keyword, perPage: 10}));
-                setPrevKeyword(keyword)
+                setPrevKeyword(keyword);
                 setIsEnter(false)
             } else {
                 //debounce auto fetch
                 timeoutId = setTimeout(() => {
-                    dispatch(fetchRestaurants({keyword, perPage: 10}))
+                    dispatch(fetchRestaurants({keyword, perPage: 10}));
                     setPrevKeyword(keyword)
                 }, 5000);
                 return () => clearTimeout(timeoutId);
@@ -35,7 +35,7 @@ const SearchInput = ({style}) => {
         if (e.keyCode === 13) {
             setIsEnter(true);
         }
-    }
+    };
 
     const searchHandler = (e) => {
         setKeyword(e.target.value);

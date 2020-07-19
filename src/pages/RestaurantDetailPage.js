@@ -1,10 +1,13 @@
 import React from "react";
+import RestaurantDetail from "../components/RestaurantDetail";
+import {Container} from "reactstrap";
 
-const RestaurantDetailPage = () => {
+const RestaurantDetailPage = ({match}) => {
+
     return (
-        <div>
-            detail page
-        </div>
+        <Container>
+            <RestaurantDetail restaurantId={match.params.id}/>
+        </Container>
     )
 };
 

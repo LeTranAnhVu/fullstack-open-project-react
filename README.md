@@ -13,3 +13,4 @@
 |9.7| 6 | fix bug, refactor code, connect with firebase, create page detail, ready to do backend|
 |12.7|4| connect to flask server api, connect fix error,  make it work
 |17.7|10| pagination done, put pagination to bottom, search keyword done, map and fix api from backend
+|18.7 + 19.7 |6| cart logic for redux
