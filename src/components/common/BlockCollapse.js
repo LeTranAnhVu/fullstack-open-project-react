@@ -34,7 +34,7 @@ const BlockCollapse = ({children, wishHeight = 120}) => {
     return (
         <div onClick={toggle} ref={blockRef} style={{height: height}} className="block-collapse">
             {children}
-            <div className={`overlay ${collapse ? 'active' : null}`}>
+            <div className={`overlay ${collapse ? 'active' : ''}`}>
                 <FontAwesomeIcon className="icon-down"
                     icon={["fa", "chevron-down"]}
                 />

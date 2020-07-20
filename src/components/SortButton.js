@@ -28,7 +28,7 @@ const SortButton = () => {
             icon="sort-down";
         }
         return <FontAwesomeIcon style={{marginLeft: '5px'}} className="search-icon" icon={icon} />
-    }
+    };
     return (
         <animated.div style={{marginTop: "20px", ...style}}>
             <Button onClick={onChangeSortStatus} color="secondary"> Sort {renderIcon()}</Button>

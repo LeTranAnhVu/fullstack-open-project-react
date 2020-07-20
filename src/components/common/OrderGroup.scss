@@ -26,9 +26,11 @@
 
   .message-group {
     width: 100%;
+
     .message-content {
       position: relative;
-      .close-button{
+
+      .close-button {
         position: absolute;
         top: -11px;
         right: -11px;
@@ -40,6 +42,7 @@
         height: 26px;
         font-size: 12px;
         text-align: center;
+
         &:hover {
           background: #343a40;
           color: #fff;
@@ -51,6 +54,7 @@
         font-size: 1em;
         font-family: monospace;
       }
+
       &.flat {
         height: 0;
         padding: 0;
@@ -58,10 +62,12 @@
         visibility: hidden;
       }
     }
+
     button {
       border: none;
       color: #228be6;
       margin-bottom: 5px;
+      padding: 0;
 
       &:hover {
         text-decoration: underline;
