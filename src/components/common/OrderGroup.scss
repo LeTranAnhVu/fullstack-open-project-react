@@ -1,24 +1,73 @@
-.change-amount-buttons {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  margin: 10px 0;
+.order-group {
+  .change-amount-buttons {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin: 10px 0;
 
-  .amount-button {
-    width: 42px;
-    height: 42px;
-    border-radius: 2px;
+    .amount-button {
+      width: 42px;
+      height: 42px;
+      border-radius: 2px;
+    }
+
+
+    p {
+      margin: 0;
+      font-size: 1.5em;
+      flex-grow: 1;
+    }
+
+    button:hover {
+      background: #343a40;
+      color: #fff;
+    }
   }
 
+  .message-group {
+    width: 100%;
+    .message-content {
+      position: relative;
+      .close-button{
+        position: absolute;
+        top: -11px;
+        right: -11px;
+        color: #343a40;
+        background: white;
+        border-radius: 14px;
+        border: 1px solid #343a40;
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+        text-align: center;
+        &:hover {
+          background: #343a40;
+          color: #fff;
+        }
+      }
 
-  p {
-    margin: 0;
-    font-size: 1.5em;
-    flex-grow: 1;
-  }
+      textarea {
+        width: 100%;
+        font-size: 1em;
+        font-family: monospace;
+      }
+      &.flat {
+        height: 0;
+        padding: 0;
+        border: 0;
+        visibility: hidden;
+      }
+    }
+    button {
+      border: none;
+      color: #228be6;
+      margin-bottom: 5px;
 
-  button:hover {
-    background: #343a40;
-    color: #fff;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+
   }
 }

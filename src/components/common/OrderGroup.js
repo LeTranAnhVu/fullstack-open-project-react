@@ -1,11 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import './OrderGroup.scss';
 import {useDispatch} from "react-redux";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {addToCart, updateToCart, deleteToCart} from "../../actions";
 
 const OrderGroup = ({restaurantId}) => {
     const dispatch = useDispatch();
     const [amount, setAmount] = useState(0);
+
+    const [isOpenMessage, setIsOpenMessage] = useState(false);
+    const [message, setMessage] = useState('');
+
     const onAmountChange = (_amount) => {
         setAmount(_amount)
     };
@@ -36,6 +41,22 @@ const OrderGroup = ({restaurantId}) => {
         onAmountChange(amount);
     }, [amount]);
 
+    const toggleMessage = () => {
+        if (!message) {
+            setIsOpenMessage(true);
+        }
+    };
+
+    const typingMessage = (e) => {
+        setMessage(e.target.value);
+    };
+
+    const onClose = () => {
+        setMessage('');
+        setIsOpenMessage(false);
+
+    };
+
     return (
         <div className="order-group">
             <div className="change-amount-buttons">
@@ -47,6 +68,15 @@ const OrderGroup = ({restaurantId}) => {
                             <button className='amount-button' onClick={() => changeAmount('+')}>+</button>
                         </div>
                 }
+            </div>
+            <div className='message-group'>
+                <button onClick={toggleMessage}>+ Message</button>
+                <div className={`message-content ${!isOpenMessage ? 'flat' : null}`}>
+                    <button onClick={onClose} className='close-button'><FontAwesomeIcon icon={["fa", "minus"]}/></button>
+                    <textarea onChange={typingMessage} value={message}
+                              name="note" id="" cols="30" rows="3"/>
+                </div>
+
             </div>
 
         </div>

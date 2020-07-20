@@ -15,3 +15,4 @@
 |17.7|10| pagination done, put pagination to bottom, search keyword done, map and fix api from backend
 |18.7 + 19.7 |6| cart logic for redux
 |19.7 |6| restaurant detail logic and ui is done 90%
+|20.7 |4| restaurant detail add message

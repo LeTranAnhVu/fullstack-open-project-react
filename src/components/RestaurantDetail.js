@@ -132,7 +132,10 @@ const RestaurantDetail = ({restaurantId}) => {
                         <Divide/>
                         <OrderGroup restaurantId={restaurantId}/>
                         <Divide/>
-                        <BlockCollapse>{restaurant.description}</BlockCollapse>
+                        <div>
+                            Description:
+                            <BlockCollapse>{restaurant.description}</BlockCollapse>
+                        </div>
                         <Divide/>
                         <div className="location"><p><FontAwesomeIcon
                             className="city-icon"
