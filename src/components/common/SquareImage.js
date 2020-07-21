@@ -5,12 +5,12 @@ const SquareImage = ({w = '100%', url = null}) => {
     const divRef = useRef(w);
     const [actuaWidth, setActuaWidth] = useState(w);
 
-    useLayoutEffect(() => {
+    useEffect(() => {
         setActuaWidth(divRef.current.getBoundingClientRect()['width']);
-    }, [actuaWidth]);
+    }, []);
 
     return (
-        <div ref={divRef} style={{width: actuaWidth, height: actuaWidth}} className="square-image shadow">
+        <div ref={divRef} style={{width: actuaWidth, height: actuaWidth}} className="square-image">
             <img src={url} alt=""/>
         </div>
     )

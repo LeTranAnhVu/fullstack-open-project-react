@@ -17,3 +17,4 @@
 |19.7 |6| restaurant detail logic and ui is done 90%
 |20.7 |4| restaurant detail add message
 | |4.5| researched about animation, apply to react code, refactor code
+|21.7 |8.5| refactor component ,add cart, redux, refactor code, refactor code 

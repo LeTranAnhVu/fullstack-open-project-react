@@ -1,0 +1,39 @@
+
+.cart-button-div {
+  position: relative;
+
+  button {
+    background: #228be6;
+    color: #ffffff;
+    border: 2px #fff solid;
+    border-radius: 7px;
+    padding: 1px 30px;
+    font-size: 1.5em;
+    width: 230px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+
+    &:focus {
+      outline: none;
+    }
+
+    .number-items {
+      font-size: 0.5em;
+      background: #ef0101;
+      min-width: 25px;
+      height: 25px;
+      border-radius: 16px;
+      color: #ffffff;
+      margin: 0;
+      padding: 1px 6px;
+      position: absolute;
+      top: -10px;
+      right: -13px;
+      text-align: center;
+      font-weight: bold;
+      border: 2px #fff solid;
+    }
+  }
+}

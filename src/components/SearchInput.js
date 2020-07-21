@@ -22,7 +22,7 @@ const SearchInput = ({style}) => {
                 timeoutId = setTimeout(() => {
                     dispatch(fetchRestaurants({keyword, perPage: 10}));
                     setPrevKeyword(keyword)
-                }, 5000);
+                }, 500);
                 return () => clearTimeout(timeoutId);
             }
         }

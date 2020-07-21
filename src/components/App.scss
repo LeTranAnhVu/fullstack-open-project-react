@@ -2,9 +2,13 @@
   //font-family: 'Montserrat,sans-serif';
 }
 
-.shadow {
+.box-shade {
   box-shadow: 2px 2px 7px #ccc;
   transform: perspective(500px) translateZ(0);
+  &.add-hover-3d:hover, &.active-3d {
+    box-shadow: 0px 10px 9px -7px #333;
+    transform: scale3d(1.1, 1.1, 1.1) translate(-2px, 2px);
+  }
 }
 
 // Medium devices (tablets, 768px and up)

@@ -1,31 +1,20 @@
-import {FETCH_RESTAURANTS, SORT_RESTAURANTS} from "../actions/types";
-
-const DEFAULT_STATE = null;
-
-const sortBy = (status, restaurants) => {
-    //acs
-    if (status === 1) {
-        restaurants.sort((resA, resB) => {
-            return resA.name > resB.name ? 1 : (resA.name < resB.name ? -1 : 0)
-        })
-    } else if (status === 2) {
-        //desc
-        restaurants.sort((resA, resB) => {
-            return resA.name > resB.name ? -1 : (resA.name < resB.name ? 1 : 0)
-        })
-
-    }
-    return restaurants;
+import {FETCH_RESTAURANT, FETCH_RESTAURANTS} from "../actions/types";
+import _ from 'lodash';
+const DEFAULT_STATE = {
+    data: []
 };
+
 const restaurantReducer = (restaurants = DEFAULT_STATE, action) => {
     switch (action.type) {
         case FETCH_RESTAURANTS : {
-            return {...action.payload};
+            let list = _.keyBy(_.cloneDeep(action.payload.data), 'id');
+            return {...action.payload, data: list};
         }
-        // case SORT_RESTAURANTS: {
-        //     let res = sortBy(action.payload, [...restaurants]);
-        //     return res;
-        // }
+        case FETCH_RESTAURANT : {
+            let clone = {...restaurants};
+            clone.data[action.payload.id] = action.payload;
+            return {...clone};
+        }
         default: {
             return restaurants;
         }

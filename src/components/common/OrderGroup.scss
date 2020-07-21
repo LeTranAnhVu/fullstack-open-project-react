@@ -29,6 +29,8 @@
 
     .message-content {
       position: relative;
+      height: 136px;
+      transition: all ease-out 0.4s;
 
       .close-button {
         position: absolute;
@@ -60,6 +62,9 @@
         padding: 0;
         border: 0;
         visibility: hidden;
+        .close-button, textarea {
+          display: none;
+        }
       }
     }
 

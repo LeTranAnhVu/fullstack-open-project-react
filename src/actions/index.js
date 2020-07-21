@@ -1,4 +1,11 @@
-import {FETCH_RESTAURANTS, SORT_RESTAURANTS} from "./types";
+import {
+    ADD_TO_CART,
+    DELETE_TO_CART,
+    FETCH_RESTAURANT,
+    FETCH_RESTAURANTS,
+    SORT_RESTAURANTS,
+    UPDATE_TO_CART
+} from "./types";
 
 import api from "../apis/index"
 
@@ -16,6 +23,15 @@ export const fetchRestaurants = (metaPage) => async (dispatch) => {
 
 };
 
+export const fetchRestaurant = (id) => async (dispatch) => {
+    let data = (await api.get(`restaurants/${id}`)).data.restaurant;
+    dispatch({
+        type: FETCH_RESTAURANT,
+        payload: data
+    })
+
+};
+
 export const sortRestaurants = (status) => (dispatch) => {
     dispatch({
         type: SORT_RESTAURANTS,
@@ -26,23 +42,23 @@ export const sortRestaurants = (status) => (dispatch) => {
 
 // cart
 
-export const addToCart = (item) => (dispatch) => {
-    dispatch({
-        type: 'ADD_TO_CART',
+export const addToCart = (item) => {
+    return {
+        type: ADD_TO_CART,
         payload: item
-    })
+    }
 };
 
 export const updateToCart = (item) => {
     return {
-        type: 'UPDATE_TO_CART',
+        type: UPDATE_TO_CART,
         payload: item
     }
 };
 
 export const deleteToCart = (item) => {
     return {
-        type: 'DELETE_TO_CART',
+        type: DELETE_TO_CART,
         payload: item
     }
 };

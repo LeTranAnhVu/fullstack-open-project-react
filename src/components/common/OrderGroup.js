@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {useSelector} from "react-redux";
 import './OrderGroup.scss';
 import {useDispatch} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -6,23 +7,31 @@ import {addToCart, updateToCart, deleteToCart} from "../../actions";
 import {useSpring, animated, interpolate} from 'react-spring'
 
 
-const OrderGroup = ({restaurantId}) => {
+const OrderGroup = ({restaurant}) => {
     const dispatch = useDispatch();
     const [amount, setAmount] = useState(0);
     const [isOpenMessage, setIsOpenMessage] = useState(false);
     const [message, setMessage] = useState('');
 
-    // const countStyle = useSpring({scale: 1.2, from: {scale: 1}});
     const [state, toggle] = useState(false);
     const {x} = useSpring({from: {x: 0}, x: state ? 1 : 0, config: {duration: 120}});
 
+    const previousItem = useSelector((state) => {
+        return state.cart[restaurant.id];
+    });
+    useEffect(() => {
+        if(previousItem) {
+            setAmount(previousItem.amount)
+            if(previousItem.message){
+                setIsOpenMessage(true);
+                setMessage(previousItem.message)
+            }
+        }
+    }, [previousItem]);
 
-    const onAmountChange = (_amount) => {
-        setAmount(_amount)
-    };
     const startOrder = () => {
         if (amount === 0) {
-            dispatch(addToCart({itemId: restaurantId, amount: amount + 1}));
+            dispatch(addToCart({...restaurant, amount: amount + 1, message: message}));
             setAmount(amount + 1);
             toggle(!state);
         }
@@ -31,23 +40,19 @@ const OrderGroup = ({restaurantId}) => {
     const changeAmount = (type) => {
         if (type === '-' && amount > 0) {
             if (amount === 1) {
-                dispatch(deleteToCart({itemId: restaurantId}));
+                dispatch(deleteToCart({id: restaurant.id}));
             } else {
-                dispatch(updateToCart({itemId: restaurantId, amount: amount - 1}));
+                dispatch(updateToCart({...restaurant, amount: amount - 1, message: message}));
             }
             setAmount(amount - 1);
         }
 
         if (type === '+') {
-            dispatch(updateToCart({itemId: restaurantId, amount: amount + 1}));
+            dispatch(updateToCart({...restaurant, amount: amount + 1, message: message}));
             setAmount(amount + 1);
         }
         toggle(!state);
     };
-
-    useEffect(() => {
-        onAmountChange(amount);
-    }, [amount]);
 
     const toggleMessage = () => {
         if (!message) {
@@ -58,6 +63,17 @@ const OrderGroup = ({restaurantId}) => {
     const typingMessage = (e) => {
         setMessage(e.target.value);
     };
+
+    // update message
+    useEffect(() => {
+        let id = null;
+        if (amount) {
+            id = setTimeout(() => {
+                dispatch(updateToCart({...restaurant, amount: amount, message: message}));
+            }, 800);
+        }
+        return () => clearTimeout(id);
+    }, [message]);
 
     const onClose = () => {
         setMessage('');
@@ -84,16 +100,21 @@ const OrderGroup = ({restaurantId}) => {
                         </div>
                 }
             </div>
-            <div className='message-group'>
-                <button onClick={toggleMessage}>+ Message</button>
-                <div className={`message-content ${!isOpenMessage ? 'flat' : null}`}>
-                    <button onClick={onClose} className='close-button'><FontAwesomeIcon icon={["fa", "minus"]}/>
-                    </button>
-                    <textarea onChange={typingMessage} value={message}
-                              name="note" id="" cols="30" rows="5"/>
-                </div>
+            {
+                amount ?
+                    <div className='message-group'>
+                        <button onClick={toggleMessage}>+ Message</button>
+                        <div className={`message-content ${!isOpenMessage ? 'flat' : null}`}>
+                            <button onClick={onClose} className='close-button'><FontAwesomeIcon icon={["fa", "minus"]}/>
+                            </button>
+                            <textarea onChange={typingMessage} value={message}
+                                      name="note" id="" cols="30" rows="5"/>
+                        </div>
 
-            </div>
+                    </div>
+                    : null
+            }
+
 
         </div>
     );

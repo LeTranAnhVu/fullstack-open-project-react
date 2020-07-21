@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {useSelector, useDispatch} from "react-redux";
+import _ from 'lodash';
 
 // actions
 import {fetchRestaurants} from "../actions";
@@ -17,7 +18,14 @@ const RestaurantList = () => {
 
     const dispatch = useDispatch();
     const restaurantsData = useSelector(state => {
-        return state.restaurants;
+        if (!_.isEmpty(state.restaurants)) {
+            let restaurants = Object.keys(state.restaurants.data).map((key) => {
+                return state.restaurants.data[key];
+            });
+            return {...state.restaurants, data: restaurants};
+        }
+
+        return null;
     });
 
     useEffect(() => {
