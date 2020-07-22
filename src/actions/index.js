@@ -49,10 +49,10 @@ export const addToCart = (item) => {
     }
 };
 
-export const updateToCart = (item) => {
+export const updateToCart = (id) => {
     return {
         type: UPDATE_TO_CART,
-        payload: item
+        payload: id
     }
 };
 

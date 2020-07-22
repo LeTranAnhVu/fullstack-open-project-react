@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useRef, useLayoutEffect} from 'react';
 import './SquareImage.scss';
 
-const SquareImage = ({w = '100%', url = null}) => {
+const SquareImage = ({w = '100%', url = null, style, classes}) => {
     const divRef = useRef(w);
     const [actuaWidth, setActuaWidth] = useState(w);
 
@@ -10,7 +10,8 @@ const SquareImage = ({w = '100%', url = null}) => {
     }, []);
 
     return (
-        <div ref={divRef} style={{width: actuaWidth, height: actuaWidth}} className="square-image">
+        <div ref={divRef} style={{width: actuaWidth, height: actuaWidth, ...style}}
+             className={`square-image ${classes}`}>
             <img src={url} alt=""/>
         </div>
     )

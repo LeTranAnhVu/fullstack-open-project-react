@@ -10,7 +10,7 @@ const cartReducer = (cart = {}, action) => {
         }
         case DELETE_TO_CART: {
             let cloneCart = {...cart};
-            delete cloneCart[action.payload.id];
+            delete cloneCart[action.payload];
             return cloneCart;
         }
         default: {

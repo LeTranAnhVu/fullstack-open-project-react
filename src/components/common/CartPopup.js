@@ -1,14 +1,12 @@
 import React from "react";
 import _ from 'lodash';
 import Divide from "./Divide";
-import {Row, Col} from 'reactstrap';
-import SquareImage from "./SquareImage";
+import history from "../../helpers/history";
 import './CartPopup.scss'
 import {useSelector} from "react-redux";
-import useFormattingCurrency from "../../hooks/useFormattingCurrency";
 import CartPopupItem from "./CartPopupItem";
 
-const CartPopup = ({top, right, width = '100%'}) => {
+const CartPopup = ({top, right, width = '100%', onClose}) => {
     const {cart} = useSelector((state) => {
         return ({cart: Object.keys(state.cart).map((itemId) => state.cart[itemId])});
     });
@@ -28,7 +26,7 @@ const CartPopup = ({top, right, width = '100%'}) => {
                 {buildList()}
             </ul>
             <Divide/>
-            <button className='checkout-button'>Go to checkout</button>
+            <button onClick={() => {history.push(`/checkout`); onClose()}} className='checkout-button'>Go to checkout</button>
         </div>
     );
 };

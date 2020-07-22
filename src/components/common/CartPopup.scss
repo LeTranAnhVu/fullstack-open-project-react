@@ -23,6 +23,7 @@
     overflow: scroll;
 
     .item {
+      cursor: pointer;
       font-size: .9em;
       margin-bottom: 5px;
       .item-name {

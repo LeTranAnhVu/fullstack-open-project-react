@@ -4,11 +4,13 @@ import {Route, Switch} from "react-router-dom";
 import {Redirect} from 'react-router'
 import RestaurantsPage from "../pages/RestaurantsPage";
 import RestaurantDetailPage from "../pages/RestaurantDetailPage";
+import CheckoutPage from "../pages/CheckoutPage";
 
 const MainContent = () => {
     return (
         <section className="main-content">
             <Switch>
+                <Route path="/checkout" component={CheckoutPage}/>
                 <Route path="/restaurants/:id" component={RestaurantDetailPage}/>
                 <Route path="/restaurants" component={RestaurantsPage}/>
                 <Redirect exact from="/" to="/restaurants"/>

@@ -1,0 +1,15 @@
+.close-button {
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  transition: all .3s ease-in;
+  font-size: 0.5em;
+  padding: 1px;
+  text-align: center;
+  &:hover {
+    color: #fff;
+    background: #333;
+    transform: scale(1.1);
+  }
+
+}

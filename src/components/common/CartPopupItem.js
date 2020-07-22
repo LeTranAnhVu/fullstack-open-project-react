@@ -3,6 +3,7 @@ import _ from 'lodash';
 import {Row, Col} from 'reactstrap';
 import SquareImage from "./SquareImage";
 import useFormattingCurrency from "../../hooks/useFormattingCurrency";
+import history from "../../helpers/history";
 
 const CartPopupItem = ({item}) => {
     const [symbol, price, setPrice] = useFormattingCurrency('$', 0);
@@ -10,7 +11,7 @@ const CartPopupItem = ({item}) => {
         setPrice(item.currency, item.delivery_price);
     }, []);
     return (
-        <li className='item'>
+        <li onClick={() => history.push(`/restaurants/${item.id}`)} className='item'>
             <Row>
                 <Col sm="4">
                     <SquareImage
