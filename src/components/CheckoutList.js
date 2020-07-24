@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from "react";
 import _ from 'lodash';
-import {Table} from 'reactstrap';
+import {Table, Button} from 'reactstrap';
 import CheckoutItem from './CheckoutItem';
 import {useSelector, useDispatch} from "react-redux";
 import {deleteToCart} from "../actions";
 import './CheckoutList.scss';
-import history from "../helpers/history";
+import BubbleButton from './common/BubbleButton';
 import calcTotal from "../helpers/calcTotal";
+import history from "../helpers/history";
 
 const CheckoutList = () => {
     const {cart} = useSelector((state) => {
@@ -17,7 +18,7 @@ const CheckoutList = () => {
     const [currency, setCurrency] = useState('$');
 
     useEffect(() => {
-        if(!_.isEmpty(cart)){
+        if (!_.isEmpty(cart)) {
             const [currency, total] = calcTotal(cart);
             setCurrency(currency);
             setTotal(total);
@@ -26,7 +27,9 @@ const CheckoutList = () => {
     const buildList = () => {
         if (cart && cart.length > 0) {
             return cart.map((item, index) => {
-                return <CheckoutItem onRemove={() => {console.log('eee');dispatch(deleteToCart(item.id))}} index={index+1} key={item.id} item={item}/>
+                return <CheckoutItem onRemove={() => {
+                    dispatch(deleteToCart(item.id))
+                }} index={index + 1} key={item.id} item={item}/>
             })
         }
         return <tr>
@@ -34,30 +37,35 @@ const CheckoutList = () => {
         </tr>
     }
 
+    const onCheckout = () => {
+        console.log('hahaha');
+    };
+
     return (
         <Table striped className='checkout-list'>
             <thead>
             <tr>
-                <th>#</th>
-                <th>Image</th>
+                <th className='center'>#</th>
+                <th className='center'>Image</th>
                 <th>Name</th>
                 <th>Message</th>
-                <th>Quantity</th>
-                <th>Price</th>
-                <th>Remove</th>
+                <th className='center'>Quantity</th>
+                <th className='center'>Price</th>
+                <th className='center'>Remove</th>
             </tr>
             </thead>
             <tbody>
             {buildList()}
             {/*total*/}
-            <tr className='checkout-item'>
+            <tr className='checkout-item total'>
+                <td align='center'><Button onClick={() => history.push('/restaurants')}
+                                           color="link">{`<< More`}</Button></td>
                 <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
-                <td></td>
-                <td>{`Total : ${currency+total}`}</td>
-                <td></td>
+                <td align='center' style={{fontSize: '1.2em', color: '#228be6'}}>{`Total : ${currency + total}`}</td>
+                <td align='center'><BubbleButton onClick={onCheckout} style={{display: 'block', margin: 'auto', padding: '10px 30px'}}>Order</BubbleButton></td>
             </tr>
             {/*total*/}
             </tbody>

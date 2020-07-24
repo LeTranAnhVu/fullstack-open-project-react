@@ -18,4 +18,5 @@
 |20.7 |4| restaurant detail add message
 | |4.5| researched about animation, apply to react code, refactor code
 |21.7 |8.5| refactor component ,add cart, redux, refactor code, refactor code
-|22.7 |5.5| add checkout, save the cart in localstorage by redux-persist 
+|22.7 |5.5| add checkout, save the cart in localstorage by redux-persist
+|23.7 + 24.7 |4.5|  fixed missing package persist redux ,add page login, style animation for login, make animation ring ring when fail login

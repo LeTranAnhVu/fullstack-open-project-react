@@ -5,6 +5,7 @@ import {useDispatch} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {addToCart, updateToCart, deleteToCart} from "../../actions";
 import {useSpring, animated, interpolate} from 'react-spring'
+import BubbleButton from "./BubbleButton";
 
 
 const OrderGroup = ({restaurant}) => {
@@ -93,7 +94,7 @@ const OrderGroup = ({restaurant}) => {
                             .interpolate(x => `scale(${x})`)
                     }}>Count: {amount}</animated.p>
                 {
-                    amount <= 0 ? <button onClick={startOrder} className="order-button">Add to order</button>
+                    amount <= 0 ? <BubbleButton onClick={startOrder}>Add to order</BubbleButton>
                         : <div>
                             <button className='amount-button' onClick={() => changeAmount('-')}>-</button>
                             <button className='amount-button' onClick={() => changeAmount('+')}>+</button>

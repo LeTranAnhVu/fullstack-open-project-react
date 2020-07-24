@@ -1,15 +1,24 @@
 .checkout-list {
-  th, td {
+  .center {
     text-align: center;
+    & > div {
+      display: block;
+      margin: auto;
+    }
   }
-  .checkout-item{
-    .item-name{
+
+  .checkout-item {
+    .item-name {
       cursor: pointer;
       text-decoration: underline;
       color: #228be5;
+
       &:hover {
         color: #3e9cec;
       }
+    }
+    &.total td {
+      align: center
     }
   }
 }

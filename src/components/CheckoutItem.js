@@ -10,7 +10,7 @@ const CheckoutItem = ({item, onRemove, index}) => {
     useEffect(() => {
         console.log(item);
         setPrice(item.currency, item.delivery_price);
-    },[]);
+    }, []);
 
     // IMAGES
     useEffect(() => {
@@ -26,14 +26,14 @@ const CheckoutItem = ({item, onRemove, index}) => {
 
     return (
         <tr className='checkout-item'>
-            <th scope="row">{index}</th>
-            <td><SquareImage classes='box-shade' url={mainImageUrl}/></td>
+            <th className='center' scope="row">{index}</th>
+            <td className='center'><SquareImage classes='box-shade' url={mainImageUrl}/></td>
             <td><p onClick={() => history.push(`restaurants/${item.id}`)} className='item-name'>{item.name}</p></td>
-            <td>{item.message}</td>
-            <td>{item.amount}</td>
-            <td>{symbol+price}</td>
-            <td>
-                <CloseButton/>
+            <td>{item.message.split(/\r\n|\r|\n/g).map((line) =>(<p>{line}</p>))}</td>
+            <td className='center'>{item.amount}</td>
+            <td className='center'>{symbol + price}</td>
+            <td className='center'>
+                <CloseButton onAction={onRemove}/>
             </td>
         </tr>
     )

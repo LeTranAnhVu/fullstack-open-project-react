@@ -1,4 +1,9 @@
+
 .order-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin-top: 10px;
   .change-amount-buttons {
     display: flex;
     flex-direction: row;
@@ -19,7 +24,7 @@
     }
 
     button:hover {
-      background: #343a40;
+      background: #228be6;
       color: #fff;
     }
   }
@@ -36,10 +41,10 @@
         position: absolute;
         top: -11px;
         right: -11px;
-        color: #343a40;
+        color: #228be6;
         background: white;
         border-radius: 14px;
-        border: 1px solid #343a40;
+        border: 1px solid #228be6;
         width: 26px;
         height: 26px;
         font-size: 12px;
@@ -55,6 +60,7 @@
         width: 100%;
         font-size: 1em;
         font-family: monospace;
+        border-color: #228be6;
       }
 
       &.flat {
@@ -62,6 +68,7 @@
         padding: 0;
         border: 0;
         visibility: hidden;
+
         .close-button, textarea {
           display: none;
         }

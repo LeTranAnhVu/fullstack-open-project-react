@@ -15,7 +15,9 @@ export const fetchRestaurants = (metaPage) => async (dispatch) => {
     if (metaPage) {
         queryStr = `page=${metaPage['page'] || 1}&per_page=${metaPage['perPage'] || 10}&keyword=${metaPage['keyword'] || ''}`;
     }
+    console.log('trc khi goi');
     const data = (await api.get('/restaurants?' + queryStr)).data;
+    console.log('sau khi goi');
     dispatch({
         type: FETCH_RESTAURANTS,
         payload: data
