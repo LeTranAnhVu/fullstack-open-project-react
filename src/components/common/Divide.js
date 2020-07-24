@@ -1,8 +1,9 @@
 import React from 'react';
+import './Divide.scss';
 
-const Divide = ({color = '#c1bcbc', weight = 0.5}) => {
+const Divide = ({color = '', weight = 0.5}) => {
     return (
-        <hr style={{border: `${color} ${weight}px solid`, margin: '5px 0'}}/>
+        <hr className={`app-divide ${color}`} style={{borderWidth: weight}}/>
     )
 };
 

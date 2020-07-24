@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useRef, useLayoutEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './SquareImage.scss';
 
 const SquareImage = ({w = '100%', url = null, style, classes}) => {

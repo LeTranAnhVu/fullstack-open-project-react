@@ -22,6 +22,8 @@ const Restaurant = ({ restaurant }) => {
 
   const [mainImage, setMainImage] = useState({});
 
+  const [timeoutId, setTimeoutId] = useState(null);
+
   // animation
   const fadeinAttr = useSpring({
     from: { opacity: 0 },
@@ -37,9 +39,10 @@ const Restaurant = ({ restaurant }) => {
   };
 
   const onLoadedImage = () => {
-    setTimeout(() => {
+    let timeoutId = setTimeout(() => {
       setIsLoadedImage(true);
-    }, 800);
+    }, 300);
+    setTimeoutId(timeoutId);
   };
 
   useEffect(() => {
@@ -50,8 +53,8 @@ const Restaurant = ({ restaurant }) => {
           _mainImage ? _mainImage.image : restaurant.images[0].image
         );
       }
-
     }
+    return () => { clearTimeout(timeoutId) }
   }, [restaurant]);
 
   const goToDetail = () => {

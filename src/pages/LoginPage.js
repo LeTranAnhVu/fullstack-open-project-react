@@ -1,12 +1,13 @@
-import React from "react";
+import React, {useState} from "react";
 import {Container} from "reactstrap";
 import AuthPage from "../components/common/AuthPage";
 import Login from '../components/Login';
 
 const LoginPage= () => {
+    const [ring, allowRing] = useState(false);
     return (
-        <AuthPage>
-            <Login/>
+        <AuthPage ring={ring}>
+            <Login onError={(isError) => {allowRing(isError)}}/>
         </AuthPage>
     )
 };

@@ -1,10 +1,10 @@
 import {
     ADD_TO_CART,
-    DELETE_TO_CART,
+    DELETE_TO_CART, DELETE_USER,
     FETCH_RESTAURANT,
     FETCH_RESTAURANTS,
     SORT_RESTAURANTS,
-    UPDATE_TO_CART
+    UPDATE_TO_CART, UPDATE_USER
 } from "./types";
 
 import api from "../apis/index"
@@ -42,7 +42,7 @@ export const sortRestaurants = (status) => (dispatch) => {
 };
 
 
-// cart
+// CART
 
 export const addToCart = (item) => {
     return {
@@ -64,3 +64,20 @@ export const deleteToCart = (item) => {
         payload: item
     }
 };
+
+
+// CURRENT USER
+export const updateCurrentUser = ({username, logined_at, id}) => {
+    return {
+        type: UPDATE_USER,
+        payload: {username, logined_at, id}
+    }
+};
+
+export const deleteCurrentUser = () => {
+    return {
+        type: DELETE_USER,
+        payload: null
+    }
+};
+

@@ -1,19 +1,11 @@
-.login-div{
-
-}
-
-.input-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  label {
+.login-div {
+  .app-form {
+    margin-top: 50px;
   }
-  input {
-    border: none;
-    border-bottom: 1px solid #228be5;
-    transition: all ease-out .3s;
-    &:focus {
-      outline: none;
-    }
+  .error-message {
+    color: red;
+    font-size: .9em;
+    font-style: italic;
   }
 }
+

@@ -4,3 +4,7 @@ export const SORT_RESTAURANTS = "SORT_RESTAURANTS";
 export const ADD_TO_CART = "ADD_TO_CART";
 export const UPDATE_TO_CART = "UPDATE_TO_CART";
 export const DELETE_TO_CART = "DELETE_TO_CART";
+export const UPDATE_USER = "UPDATE_USER";
+export const DELETE_USER = "DELETE_USER";
+
+

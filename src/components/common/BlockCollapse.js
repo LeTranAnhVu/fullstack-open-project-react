@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useLayoutEffect, useRef} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import './BlockCollapse.scss';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
