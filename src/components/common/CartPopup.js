@@ -7,13 +7,18 @@ import {useSelector} from "react-redux";
 import CartPopupItem from "./CartPopupItem";
 
 const CartPopup = ({top, right, width = '100%', onClose}) => {
-    const {cart} = useSelector((state) => {
-        return ({cart: Object.keys(state.cart).map((itemId) => state.cart[itemId])});
+    const {cartItems} = useSelector((state) => {
+        if (state.cart) {
+            return ({
+                cartItems: Object.keys(state.cart.items).map((itemId) => state.cart.items[itemId])
+            });
+        }
+        return {cartItems: null}
     });
 
     const buildList = () => {
-        if(!_.isEmpty(cart)) {
-            return cart.map(item => {
+        if(!_.isEmpty(cartItems)) {
+            return cartItems.map(item => {
                 return <CartPopupItem key={item.id} item={item}/>
             })
         }

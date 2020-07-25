@@ -7,9 +7,33 @@
   label {
   }
 
+
+  .textarea-wrap {
+    textarea {
+      font-family: monospace;
+      width: 100%;
+      border: 1px solid #333;
+      padding: 10px;
+      transition: all ease-out .3s;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover, &.active {
+        border: 1px solid #228be5;
+      }
+    }
+
+    &.active textarea {
+      border: 1px solid #228be5;
+    }
+
+
+  }
+
   .input-wrap {
     position: relative;
-
     input {
       border: none;
       transition: all ease-out .3s;

@@ -4,7 +4,7 @@ class AuthApi {
     loginApi = ({username, password}) => {
         return api.post('/auth/login', {username, password}, {
             headers: {
-                'Access-Control-Allow-Origin': '*'
+                // 'Access-Control-Allow-Origin': '*'
             }
         }).then((res) => {
             // save token

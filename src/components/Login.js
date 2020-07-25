@@ -53,10 +53,6 @@ const Login = ({onError}) => {
             }
         }
     };
-
-    useEffect(() => {
-        console.log('q', queries);
-    }, []);
     return (
         <div className='login-div'>
             <h1 style={{textAlign: 'center'}}>Login</h1>

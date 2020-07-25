@@ -1,29 +1,30 @@
 import React, {useEffect, useState} from "react";
-import useInput from "../../hooks/useInput";
 import './InputGroup.scss';
+import useInput from "../../hooks/useInput";
 
-const InputGroup = ({givenValue, onUpdateValue, label, type, id, name, ...attr}) => {
+const TextareaGroup = ({givenValue, onUpdateValue, label, id, name, height = 120, ...attr}) => {
     const [value, setValue, updateValue, isDirty, setIsDirty, isTouched, setIsTouched] = useInput(name, onUpdateValue, givenValue);
+
     const onBlur = () => {
         if (!isTouched) {
             setIsTouched(true)
         }
     };
-    useEffect(() => {
-    }, [isDirty,value])
 
     const onFocus = () => {
         // console.log('focus');
     };
+
+
     return (
         <div className='input-group'>
             <label htmlFor={name}>{label}</label>
-            <div className={`input-wrap ${isDirty || value ? 'active' : ''}`}>
-                <input onBlur={onBlur} onFocus={onFocus} value={value} onChange={updateValue} type={type} id={id}
-                       name={name} {...attr}/>
+            <div className={`textarea-wrap ${isDirty || value ? 'active' : ''}`}>
+                <textarea onBlur={onBlur} onFocus={onFocus} value={value} onChange={updateValue} id={id}
+                          name={name} style={{height: height}} {...attr}/>
             </div>
         </div>
     )
 };
 
-export default InputGroup;
+export default TextareaGroup;

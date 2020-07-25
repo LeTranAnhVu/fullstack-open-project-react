@@ -1,8 +1,8 @@
 import React from "react";
 import './BubbleButton.scss';
 
-const BubbleButton = ({children, onClick, style}) => {
-    return (<button style={style} onClick={onClick} className='bubble-button'>
+const BubbleButton = ({children, onClick, isDisabled, style, ...attr}) => {
+    return (<button {...attr} style={style} onClick={onClick} className={`bubble-button ${isDisabled ? 'disabled': ''}`}>
         {children}</button>)
 }
 

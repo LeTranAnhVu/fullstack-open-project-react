@@ -21,3 +21,4 @@
 |22.7 |5.5| add checkout, save the cart in localstorage by redux-persist
 |23.7 + 24.7 |4.5|  fixed missing package persist redux ,add page login, style animation for login, make animation ring ring when fail login
 |24.7 + 25.7 |6|  add logic for logic page
+|25.7 |8|  order feature,apply to redux, call api , update checkout list, make delivery form, make useInput hook

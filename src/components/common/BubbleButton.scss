@@ -8,8 +8,13 @@
   position: relative;
   background: transparent;
   z-index: 0;
+  &.disabled {
+    border: 2px solid #ddd;
+    background: #ddd;
+    color: #fff;
+  }
 
-  &:hover {
+  &:not(.disabled):hover {
     //background: #228be5;
     color: #fff;
 
@@ -20,7 +25,7 @@
     }
   }
 
-  &:after {
+  &:not(.disabled):after {
     display: block;
     content: "";
     position: absolute;

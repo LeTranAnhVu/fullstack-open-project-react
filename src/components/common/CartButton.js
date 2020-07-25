@@ -9,27 +9,32 @@ import useFormattingCurrency from "../../hooks/useFormattingCurrency";
 import calcTotal from "../../helpers/calcTotal";
 
 const CartButton = () => {
-    const {cart} = useSelector((state) => {
-        return ({cart: Object.keys(state.cart).map((itemId) => state.cart[itemId])});
+    const {cartItems} = useSelector((state) => {
+        if (state.cart) {
+            return ({
+                cartItems: Object.keys(state.cart.items).map((itemId) => state.cart.items[itemId])
+            });
+        }
+        return {cartItems: null}
     });
     const [total, setTotal] = useState(0);
     const [currency, setCurrency] = useState('$');
 
     const [isShowPopup, togglePopup] = useState(false);
     useEffect(() => {
-        if(!_.isEmpty(cart)){
-            const [currency, total] = calcTotal(cart);
+        if(!_.isEmpty(cartItems)){
+            const [currency, total] = calcTotal(cartItems);
             setCurrency(currency);
             setTotal(total);
         }
-    }, [cart]);
+    }, [cartItems]);
 
-    if (!_.isEmpty(cart)) {
+    if (!_.isEmpty(cartItems)) {
         return (
             <div className='cart-button-div'>
                 <button onClick={() => togglePopup(!isShowPopup)}>
                     <FontAwesomeIcon icon={['fa', 'cart-plus']}/>
-                    <p className='number-items'>{cart.length <= 9 ? cart.length: '9+' }</p>
+                    <p className='number-items'>{cartItems.length <= 9 ? cartItems.length: '9+' }</p>
                     Total: {currency + total}
                 </button>
                 {

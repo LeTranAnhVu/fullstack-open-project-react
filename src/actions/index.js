@@ -3,8 +3,8 @@ import {
     DELETE_TO_CART, DELETE_USER,
     FETCH_RESTAURANT,
     FETCH_RESTAURANTS,
-    SORT_RESTAURANTS,
-    UPDATE_TO_CART, UPDATE_USER
+    SORT_RESTAURANTS, UPDATE_ADDRESS_TO_CART,
+    UPDATE_TO_CART, UPDATE_USER, REMOVE_CART
 } from "./types";
 
 import api from "../apis/index"
@@ -15,22 +15,24 @@ export const fetchRestaurants = (metaPage) => async (dispatch) => {
     if (metaPage) {
         queryStr = `page=${metaPage['page'] || 1}&per_page=${metaPage['perPage'] || 10}&keyword=${metaPage['keyword'] || ''}`;
     }
-    console.log('trc khi goi');
     const data = (await api.get('/restaurants?' + queryStr)).data;
-    console.log('sau khi goi');
     dispatch({
         type: FETCH_RESTAURANTS,
         payload: data
     });
-
 };
 
 export const fetchRestaurant = (id) => async (dispatch) => {
-    let data = (await api.get(`restaurants/${id}`)).data.restaurant;
-    dispatch({
-        type: FETCH_RESTAURANT,
-        payload: data
-    })
+    try {
+        let data = (await api.get(`restaurants/${id}`)).data.restaurant;
+        dispatch({
+            type: FETCH_RESTAURANT,
+            payload: data
+        })
+    } catch (e) {
+        return null
+    }
+
 
 };
 
@@ -51,10 +53,17 @@ export const addToCart = (item) => {
     }
 };
 
-export const updateToCart = (id) => {
+export const updateToCart = (item) => {
     return {
         type: UPDATE_TO_CART,
-        payload: id
+        payload: item
+    }
+};
+
+export const updateAddressToCart = (address) => {
+    return {
+        type: UPDATE_ADDRESS_TO_CART,
+        payload: address
     }
 };
 
@@ -65,6 +74,11 @@ export const deleteToCart = (item) => {
     }
 };
 
+export const removeCart = () => {
+    return {
+        type: REMOVE_CART
+    }
+};
 
 // CURRENT USER
 export const updateCurrentUser = ({username, logined_at, id}) => {

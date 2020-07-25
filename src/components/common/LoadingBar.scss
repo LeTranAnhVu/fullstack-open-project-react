@@ -1,0 +1,39 @@
+.loading-bar-wrap {
+  background: #ddd;
+  .loading-bar {
+    background: transparent;
+    animation: process infinite 1s;
+    display: block;
+  }
+}
+
+
+@keyframes process {
+  0% {
+    width: 0;
+    background-color: #228be5;
+  }
+  25% {
+    width: 40%;
+    background-color: #228be5;
+  }
+  70% {
+    width: 80%;
+    background-color: #228be5;
+  }
+  100% {
+    width: 100%;
+    background-color: #228be5;
+  }
+}
+
+
+//hr.app-divide {
+//  margin: 5px 0;
+//  border-style: solid;
+//  border-color: #c1bcbc;
+//}
+//
+//hr.app-divide.blue {
+//  border-color: #228be5;
+//}

@@ -4,7 +4,7 @@ import './OrderGroup.scss';
 import {useDispatch} from "react-redux";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {addToCart, updateToCart, deleteToCart} from "../../actions";
-import {useSpring, animated, interpolate} from 'react-spring'
+import {useSpring, animated} from 'react-spring'
 import BubbleButton from "./BubbleButton";
 
 
@@ -18,11 +18,15 @@ const OrderGroup = ({restaurant}) => {
     const {x} = useSpring({from: {x: 0}, x: state ? 1 : 0, config: {duration: 120}});
 
     const previousItem = useSelector((state) => {
-        return state.cart[restaurant.id];
+        if (state.cart) {
+            return state.cart.items[restaurant.id]
+        }
+        return null;
     });
+
     useEffect(() => {
         if(previousItem) {
-            setAmount(previousItem.amount)
+            setAmount(previousItem.amount);
             if(previousItem.message){
                 setIsOpenMessage(true);
                 setMessage(previousItem.message)
