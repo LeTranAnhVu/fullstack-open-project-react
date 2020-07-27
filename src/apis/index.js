@@ -3,11 +3,7 @@ import tokenService from '../Auth/TokenStorageService';
 import history from "../helpers/history";
 import {getCurrentFullPath} from '../helpers/urlHelpers';
 
-let apiUrl = 'http://localhost:5000/api';
-// let apiUrl = 'http://192.168.0.200:5000/api';
-if (process.env.NODE_ENV === 'production') {
-    apiUrl = 'http://54.169.128.14:4000'
-}
+let apiUrl = '/api';
 
 const api = axios.create({
     baseURL: apiUrl
