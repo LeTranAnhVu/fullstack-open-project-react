@@ -10,6 +10,7 @@ import {Row, Col, Alert} from "reactstrap";
 import {Spinner} from 'reactstrap';
 import Restaurant from "./Restaurant";
 import AppPagination from "./common/AppPaginagtion";
+import history from '../helpers/history'
 
 
 const RestaurantList = () => {
@@ -18,14 +19,14 @@ const RestaurantList = () => {
 
     const dispatch = useDispatch();
     const restaurantsData = useSelector(state => {
-        if (!_.isEmpty(state.restaurants)) {
+        if (!_.isEmpty(state.restaurants) && !_.isEmpty(state.restaurants.data)) {
             let restaurants = Object.keys(state.restaurants.data).map((key) => {
                 return state.restaurants.data[key];
             });
             return {...state.restaurants, data: restaurants};
+        }else {
+            history.push('/initialize-data')
         }
-
-        return null;
     });
 
     useEffect(() => {

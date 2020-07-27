@@ -8,6 +8,7 @@ import CheckoutPage from "../pages/CheckoutPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import OrdersPage from "../pages/OrdersPage";
+import InitializeData from '../pages/InitializeData'
 
 const MainContent = () => {
     return (
@@ -19,6 +20,7 @@ const MainContent = () => {
                 <Route path="/orders" component={OrdersPage}/>
                 <Route path="/restaurants/:id" component={RestaurantDetailPage}/>
                 <Route path="/restaurants" component={RestaurantsPage}/>
+                <Route path="/initialize-data" component={InitializeData}/>
                 <Redirect exact from="/" to="/restaurants"/>
             </Switch>
         </section>
