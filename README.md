@@ -23,3 +23,4 @@
 |24.7 + 25.7 |6|  add logic for logic page
 |25.7 |8|  order feature,apply to redux, call api , update checkout list, make delivery form, make useInput hook
 |26.7 + 27.7 |10|  add logout, register , user status in header, user popup, + style, add order list page, match with server
+|total |103| Please note that I also have backend and devops working hours 
