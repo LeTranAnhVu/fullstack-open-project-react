@@ -1,10 +1,11 @@
+@import "colors";
 
 .cart-button-div {
   position: relative;
 
   button {
-    background: #228be6;
-    color: #ffffff;
+    background: $regular-blue;
+    color: $regular-white;
     border: 2px #fff solid;
     border-radius: 7px;
     padding: 1px 30px;
@@ -21,11 +22,11 @@
 
     .number-items {
       font-size: 0.5em;
-      background: #ef0101;
+      background: $regular-red;
       min-width: 25px;
       height: 25px;
       border-radius: 5px;
-      color: #ffffff;
+      color: $regular-white;
       margin: 0;
       padding: 1px 6px;
       position: absolute;
@@ -33,7 +34,7 @@
       right: -13px;
       text-align: center;
       font-weight: bold;
-      border: 2px #fff solid;
+      border: 2px $regular-white solid;
     }
   }
 }

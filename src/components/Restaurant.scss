@@ -1,3 +1,5 @@
+@import "./common/colors";
+
 .restaurant {
   margin-bottom: 20px;
 
@@ -15,7 +17,7 @@
     border-radius: 8px;
 
     &.on {
-      background: #3eff3e;
+      background: $regular-green;
     }
 
     &.off {
@@ -40,7 +42,7 @@
     position: relative;
     border-radius: 5px;
     overflow: hidden;
-    box-shadow: 2px 2px 7px #ccc;
+    box-shadow: 2px 2px 7px $regular-gray;
     transition: all .2s ease;
     height: 280px;
     transform: perspective(500px) translateZ(0);
@@ -81,7 +83,7 @@
       position: absolute;
       bottom: 0;
       left: 0;
-      color: #fff;
+      color: $regular-white;
       width: 100%;
 
 
@@ -89,7 +91,7 @@
         font-weight: bold;
         font-size: 22px;
         padding: 0 0 10px 10px;
-        text-shadow: 0.5px 0.5px 8px #130a03;
+        text-shadow: 0.5px 0.5px 8px $regular-black;
       }
 
       overflow: hidden;
@@ -97,7 +99,7 @@
       .description {
         overflow: hidden;
         transition: all .2s ease;
-        background: #0807078c;
+        background: $regular-black;
         display: block;
         font-size: .8em;
 

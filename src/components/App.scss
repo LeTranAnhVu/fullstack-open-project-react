@@ -1,6 +1,27 @@
+//@font-face {
+//  font-family: 'Montserrat';
+//  src: local('Montserrat'), url(../fonts/Montserrat-Regular.ttf) format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Montserrat';
+//  font-weight: 700;
+//  src: local('Montserrat'), url(../fonts/Montserrat-Bold.ttf) format('truetype');
+//}
+//
+//@font-face {
+//  font-family: 'Montserrat';
+//  font-weight: 300;
+//  src: local('Montserrat'), url(../fonts/Montserrat-Light.ttf) format('truetype');
+//}
+
+@import "./common/colors";
+
 *, body {
-  //font-family: 'Montserrat,sans-serif';
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 }
+
 p {
   margin: 0;
 }
@@ -14,6 +35,11 @@ p {
   }
 }
 
+
+.app-special-h1 {
+  font-weight: bold;
+  font-family: 'Pacifico', cursive
+}
 // Medium devices (tablets, 768px and up)
 @media (min-width: 768px) {
 }

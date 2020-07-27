@@ -1,6 +1,7 @@
 import axios from "axios";
 import tokenService from '../Auth/TokenStorageService';
 import history from "../helpers/history";
+import {getCurrentFullPath} from '../helpers/urlHelpers';
 
 let apiUrl = 'http://localhost:5000/api';
 // let apiUrl = 'http://192.168.0.200:5000/api';
@@ -25,8 +26,9 @@ api.interceptors.request.use((config) => {
 api.interceptors.response.use((response) => {
     return Promise.resolve(response);
 }, (error) => {
-    if (error.response.status === 401) {
-        history.push('/login');
+    if (error.response && error.response.status === 401) {
+        let current_url = getCurrentFullPath();
+        history.push('/login?redirect_url=' + current_url);
     }
     return Promise.reject(error);
 });

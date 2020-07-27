@@ -1,7 +1,8 @@
+@import "colors";
 .checkout-button {
-  color: #228be6;
-  background: #ffffff;
-  border: 2px #228be6 solid;
+  color: $regular-blue;
+  background: $regular-white;
+  border: 2px $regular-blue solid;
   border-radius: 7px;
   padding: 5px 30px;
   font-size: 1.2em;
@@ -10,8 +11,8 @@
   transition: all ease-in .2s;
 
   &:hover {
-    background: #228be6;
-    color: #ffffff;
+    background: $regular-blue;
+    color: $regular-white;
   }
 
 }

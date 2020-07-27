@@ -7,6 +7,7 @@ import RestaurantDetailPage from "../pages/RestaurantDetailPage";
 import CheckoutPage from "../pages/CheckoutPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
+import OrdersPage from "../pages/OrdersPage";
 
 const MainContent = () => {
     return (
@@ -15,6 +16,7 @@ const MainContent = () => {
                 <Route path="/login" component={LoginPage}/>
                 <Route path="/register" component={RegisterPage}/>
                 <Route path="/checkout" component={CheckoutPage}/>
+                <Route path="/orders" component={OrdersPage}/>
                 <Route path="/restaurants/:id" component={RestaurantDetailPage}/>
                 <Route path="/restaurants" component={RestaurantsPage}/>
                 <Redirect exact from="/" to="/restaurants"/>

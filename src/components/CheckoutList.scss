@@ -1,3 +1,5 @@
+@import "common/colors";
+
 .checkout-list {
   .center {
     text-align: center;
@@ -11,10 +13,10 @@
     .item-name {
       cursor: pointer;
       text-decoration: underline;
-      color: #228be5;
+      color: $regular-blue;
 
       &:hover {
-        color: #3e9cec;
+        color: $light-blue;
       }
     }
     &.total td {

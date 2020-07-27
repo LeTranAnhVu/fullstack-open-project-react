@@ -1,0 +1,25 @@
+@import "./common/colors";
+.auth-div {
+  .app-form {
+    margin-top: 50px;
+  }
+  .error-message {
+    color: $regular-red;
+    font-size: .7em;
+    font-style: italic;
+  }
+  .after-form {
+    .sub-button {
+      color: $regular-blue;
+      background: none;
+      border: none;
+      outline: none;
+      margin-top: 20px;
+      font-size: .8em;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+

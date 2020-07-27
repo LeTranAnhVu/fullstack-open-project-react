@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {useDispatch} from "react-redux";
 
-import {useLocation} from 'react-router-dom'
 import BubbleButton from "./common/BubbleButton";
-import './Login.scss';
+import './LoginAndLogout.scss';
 import InputGroup from "./common/InputGroup";
 import Divide from "./common/Divide";
 import AuthApi from "../apis/AuthApi";
 import {updateCurrentUser} from "../actions";
 import history from "../helpers/history";
 import useQueryParser from "../hooks/useQueryParser";
+import {getQueryString} from "../helpers/urlHelpers";
 
 const Login = ({onError}) => {
     const [username, setUsername] = useState('');
@@ -21,15 +21,15 @@ const Login = ({onError}) => {
     const onLogin = (e) => {
         e.preventDefault();
         onError(false);
-        AuthApi.loginApi({username, password})
+        AuthApi.login({username, password})
             .then((data) => {
                 // update user info
                 onError(false);
                 dispatch(updateCurrentUser(data.user));
-                if (queries && queries.redirectUrl) {
-                    history.push(queries.redirectUrl)
+                if (queries && queries.redirect_url) {
+                    history.push(queries.redirect_url)
                 } else {
-                    history.push('/restaurants')
+                    history.push('/')
                 }
             })
             .catch((err) => {
@@ -54,9 +54,9 @@ const Login = ({onError}) => {
         }
     };
     return (
-        <div className='login-div'>
-            <h1 style={{textAlign: 'center'}}>Login</h1>
-            <Divide color='blue' weight={2}/>
+        <div className='auth-div'>
+            <h1 className={'app-special-h1'} style={{textAlign: 'center', color: '#228be5'}}>Login</h1>
+            <Divide weight={2}/>
             <form className='app-form'>
                 <InputGroup onUpdateValue={onUpdateValue} label={'Username'} type={'text'} id={'username'}
                             name={'username'} placeholder={'Your username'}/>
@@ -67,8 +67,15 @@ const Login = ({onError}) => {
                         <p className='error-message'>{errorMessage}</p>
                         : null
                 }
-                <BubbleButton style={{display: 'block', margin: '20px auto 0', padding: '8px 30px'}}
-                              onClick={onLogin}>Enter</BubbleButton>
+                <Divide/>
+                <div className="after-form">
+                    <BubbleButton style={{display: 'block', margin: '20px auto 0', padding: '8px 30px'}}
+                                  onClick={onLogin}>Sign in</BubbleButton>
+                    <button onClick={() => history.push('/register' + getQueryString())} className='sub-button'>
+                        Create new account?
+                    </button>
+                </div>
+
             </form>
         </div>
     )

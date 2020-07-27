@@ -1,28 +1,49 @@
+@import "colors";
+
 .bubble-button {
   margin-left: 20px;
-  color: #228be5;
-  border: 2px solid #228be5;
   border-radius: 7px;
   padding: 8px 18px;
   transition: all ease-out .3s;
   position: relative;
   background: transparent;
   z-index: 0;
-  &.disabled {
-    border: 2px solid #ddd;
-    background: #ddd;
-    color: #fff;
+
+  &.blue {
+    color: $regular-blue;
+    border: 2px solid $regular-blue;
+  }
+
+  &.red {
+    color: $regular-red;
+    border: 2px solid $regular-red;
+  }
+
+  &.white {
+    color: $regular-white;
+    border: 2px solid $regular-white;
   }
 
   &:not(.disabled):hover {
-    //background: #228be5;
-    color: #fff;
+    color: $regular-white;
 
     &:after {
       clip-path: circle(80% at 50% 50%);
 
 
     }
+  }
+
+  &.blue:not(.disabled):hover {
+    color: $regular-white;
+  }
+
+  &.red:not(.disabled):hover {
+    color: $regular-white;
+  }
+
+  &.white:not(.disabled):hover {
+    color: $regular-blue;
   }
 
   &:not(.disabled):after {
@@ -33,9 +54,21 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #228be5;
+
     z-index: -1;
     clip-path: circle(5px at -3% -3%);
     transition: .2s ease-out;
+  }
+
+  &.blue:not(.disabled):after {
+    background: $regular-blue;
+  }
+
+  &.red:not(.disabled):after {
+    background: $regular-red;
+  }
+
+  &.white:not(.disabled):after {
+    background: $regular-white;
   }
 }

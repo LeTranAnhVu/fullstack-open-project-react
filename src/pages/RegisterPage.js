@@ -1,11 +1,13 @@
-import React from "react";
-import {Container} from "reactstrap";
+import React, {useState} from "react";
+import Register from "../components/Register";
+import AuthPage from "../components/common/AuthPage";
 
 const RegisterPage = () => {
+    const [ring, allowRing] = useState(false);
     return (
-        <Container>
-            register
-        </Container>
+        <AuthPage ring={ring}>
+            <Register onError={(isError) => {allowRing(isError)}}/>
+        </AuthPage>
     )
 };
 

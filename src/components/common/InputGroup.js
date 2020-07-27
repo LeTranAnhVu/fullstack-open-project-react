@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import useInput from "../../hooks/useInput";
 import './InputGroup.scss';
 
-const InputGroup = ({givenValue, onUpdateValue, label, type, id, name, ...attr}) => {
+const InputGroup = ({givenValue, errors = [], onUpdateValue, label, type, id, name, ...attr}) => {
     const [value, setValue, updateValue, isDirty, setIsDirty, isTouched, setIsTouched] = useInput(name, onUpdateValue, givenValue);
     const onBlur = () => {
         if (!isTouched) {
@@ -10,7 +10,15 @@ const InputGroup = ({givenValue, onUpdateValue, label, type, id, name, ...attr})
         }
     };
     useEffect(() => {
-    }, [isDirty,value])
+    }, [isDirty, value])
+
+
+    const showErrors = () => {
+        if (errors.length > 0) {
+            return errors.map((errorMessage) => <p className='error-message'>* {errorMessage}</p>)
+        }
+        return null;
+    };
 
     const onFocus = () => {
         // console.log('focus');
@@ -22,6 +30,7 @@ const InputGroup = ({givenValue, onUpdateValue, label, type, id, name, ...attr})
                 <input onBlur={onBlur} onFocus={onFocus} value={value} onChange={updateValue} type={type} id={id}
                        name={name} {...attr}/>
             </div>
+            {showErrors()}
         </div>
     )
 };

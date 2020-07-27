@@ -6,11 +6,27 @@ import NavbarApp from "./NavbarApp";
 
 import "./App.scss";
 
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faSearch, faMapMarkerAlt, faSort, faSortUp, faSortDown, faChevronDown, faTimes, faMinus, faCartPlus} from '@fortawesome/free-solid-svg-icons';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {
+    faSearch,
+    faMapMarkerAlt,
+    faSort,
+    faSortUp,
+    faSortDown,
+    faChevronLeft,
+    faChevronRight,
+    faChevronDown,
+    faTimes,
+    faMinus,
+    faCartPlus,
+    faUser,
+    faCog,
+    faSignOutAlt,
+    faShoppingBag
+} from '@fortawesome/free-solid-svg-icons';
 
 
-library.add(faSearch, faMapMarkerAlt, faSort, faSortUp, faSortDown, faChevronDown, faTimes, faMinus, faCartPlus);
+library.add(faSearch, faMapMarkerAlt, faSort, faSortUp, faSortDown, faChevronDown, faChevronLeft, faChevronRight, faTimes, faMinus, faCartPlus, faUser, faCog, faSignOutAlt, faShoppingBag);
 
 
 const App = () => {

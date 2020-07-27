@@ -5,13 +5,14 @@ import CheckoutItem from './CheckoutItem';
 import Divide from "./common/Divide";
 import DeliveryForm from "./DeliveryForm";
 import {useSelector, useDispatch} from "react-redux";
-import {deleteToCart, updateAddressToCart, removeCart} from "../actions";
+import {deleteToCart, removeCart} from "../actions";
 import './CheckoutList.scss';
 import BubbleButton from './common/BubbleButton';
-import calcTotal from "../helpers/calcTotal";
+import {calcCartTotal} from "../helpers/calcTotal";
 import history from "../helpers/history";
 import OrderApi from "../apis/OrderApi";
 import LoadingPage from "./common/LoadingPage";
+import './common/colors.scss';
 
 
 const CheckoutList = () => {
@@ -72,18 +73,16 @@ const CheckoutList = () => {
                     setHasAddress(false);
                 }).catch((err) => {
                     setIsloadingPage(false);
-                    console.log('ERROR', err.response)
+                    console.error('ERROR', err.response)
                 })
             }
-
-            console.log(savedAddress);
         }
 
     };
 
     useEffect(() => {
         if (!_.isEmpty(cartItems)) {
-            const [currency, total] = calcTotal(cartItems);
+            const [currency, total] = calcCartTotal(cartItems);
             setCurrency(currency);
             setTotal(total);
         } else {
@@ -121,7 +120,7 @@ const CheckoutList = () => {
                 {buildList()}
                 {/*total*/}
                 <tr className='checkout-item total'>
-                    <td align='center'><Button onClick={() => history.push('/restaurants')}
+                    <td align='center'><Button style={{color: '#228be6'}} onClick={() => history.push('/restaurants')}
                                                color="link">{`<< Shopping more`}</Button></td>
                     <td></td>
                     <td></td>
@@ -141,13 +140,11 @@ const CheckoutList = () => {
                             </BubbleButton>
                             : null
                     }
-
                     </td>
                 </tr>
                 {/*total*/}
                 </tbody>
             </Table>
-
             {
                 isShowDeliveryForm ?
                     <Fragment>
@@ -155,14 +152,10 @@ const CheckoutList = () => {
                         <DeliveryForm savedAddress={savedAddress} onHasAddress={(value) => {
                             setHasAddress(value)
                         }}/>
-
-
                     </Fragment>
                     : null
             }
-
         </div>
-
     )
 };
 

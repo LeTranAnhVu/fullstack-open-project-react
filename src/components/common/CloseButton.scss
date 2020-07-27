@@ -1,15 +1,15 @@
+@import "colors";
 .close-button {
   border-radius: 50%;
-  background: #fff;
-  color: #000;
+  background: $regular-white;
+  color: $regular-black;
   transition: all .3s ease-in;
   font-size: 0.5em;
   padding: 1px;
   text-align: center;
   &:hover {
-    color: #fff;
-    background: #333;
+    color: $regular-white;
+    background: $regular-black;
     transform: scale(1.1);
   }
-
 }

@@ -1,0 +1,44 @@
+@import "./common/colors";
+.app-order {
+    margin: 30px 0;
+    .order-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2em;
+        .title-group {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            .title {
+                margin: 0;
+                margin-left: 5px;
+                font-size: 1em;
+                &:hover {
+                    color: $regular-gray;
+                }
+            }
+            svg {
+                transition: all ease-in .3s;
+            }
+        }
+
+        .total {
+            color: $regular-blue
+        }
+
+    }
+    &.show {
+        .order-header {
+            .title-group {
+                svg {
+                    transform: rotate(90deg);
+                }
+            }
+        }
+    }
+    .table-wrap {
+        overflow: hidden;
+    }
+}

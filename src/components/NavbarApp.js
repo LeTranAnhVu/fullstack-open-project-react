@@ -11,6 +11,7 @@ import {
     Container,
 } from 'reactstrap';
 import CartButton from "./common/CartButton";
+import UserStatus from "./UserStatus";
 import './NavbarApp.scss';
 
 const NavbarApp = (props) => {
@@ -20,7 +21,7 @@ const NavbarApp = (props) => {
     return (
         <Navbar color="dark" dark expand="sm">
             <Container>
-                <NavbarBrand tag={Link} to="/">Foode</NavbarBrand>
+                <NavbarBrand className={'app-special-h1'} tag={Link} to="/">Foode</NavbarBrand>
                 <NavbarToggler onClick={toggle}/>
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="ml-auto custom" navbar>
@@ -34,11 +35,11 @@ const NavbarApp = (props) => {
                                 <CartButton/>
                             </NavLink>
                         </NavItem>
-                        {/*<NavItem>*/}
-                        {/*    <NavLink disabled tag={Link} to="/about-us">*/}
-                        {/*        About us*/}
-                        {/*    </NavLink>*/}
-                        {/*</NavItem>*/}
+                        <NavItem>
+                            <NavLink>
+                                <UserStatus/>
+                            </NavLink>
+                        </NavItem>
                         {/*<NavItem>*/}
                         {/*    <NavLink disabled tag={Link} to="/jobs">*/}
                         {/*        Jobs*/}

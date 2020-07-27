@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import {Container} from "reactstrap";
 import AuthPage from "../components/common/AuthPage";
 import Login from '../components/Login';
 

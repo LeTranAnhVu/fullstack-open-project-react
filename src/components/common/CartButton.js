@@ -5,8 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import CartPopup from "./CartPopup";
 
 import './CartButton.scss';
-import useFormattingCurrency from "../../hooks/useFormattingCurrency";
-import calcTotal from "../../helpers/calcTotal";
+import {calcCartTotal} from "../../helpers/calcTotal";
 
 const CartButton = () => {
     const {cartItems} = useSelector((state) => {
@@ -23,7 +22,7 @@ const CartButton = () => {
     const [isShowPopup, togglePopup] = useState(false);
     useEffect(() => {
         if(!_.isEmpty(cartItems)){
-            const [currency, total] = calcTotal(cartItems);
+            const [currency, total] = calcCartTotal(cartItems);
             setCurrency(currency);
             setTotal(total);
         }

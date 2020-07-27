@@ -1,3 +1,4 @@
+@import "./colors";
 
 .order-group {
   display: flex;
@@ -24,8 +25,8 @@
     }
 
     button:hover {
-      background: #228be6;
-      color: #fff;
+      background: $regular-blue;
+      color: $regular-white;
     }
   }
 
@@ -41,18 +42,18 @@
         position: absolute;
         top: -11px;
         right: -11px;
-        color: #228be6;
+        color: $regular-blue;
         background: white;
         border-radius: 14px;
-        border: 1px solid #228be6;
+        border: 1px solid $regular-blue;
         width: 26px;
         height: 26px;
         font-size: 12px;
         text-align: center;
 
         &:hover {
-          background: #343a40;
-          color: #fff;
+          background: $regular-black;
+          color: $regular-white;
         }
       }
 
@@ -60,7 +61,7 @@
         width: 100%;
         font-size: 1em;
         font-family: monospace;
-        border-color: #228be6;
+        border-color: $regular-blue;
       }
 
       &.flat {
@@ -77,7 +78,7 @@
 
     button {
       border: none;
-      color: #228be6;
+      color: $regular-blue;
       margin-bottom: 5px;
       padding: 0;
 

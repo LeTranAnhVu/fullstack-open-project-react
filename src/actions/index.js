@@ -4,11 +4,17 @@ import {
     FETCH_RESTAURANT,
     FETCH_RESTAURANTS,
     SORT_RESTAURANTS, UPDATE_ADDRESS_TO_CART,
-    UPDATE_TO_CART, UPDATE_USER, REMOVE_CART
+    UPDATE_TO_CART, UPDATE_USER, REMOVE_CART, CLEAR_ALL
 } from "./types";
 
 import api from "../apis/index"
 
+
+export const clearAllData = () => {
+    return {
+        type: CLEAR_ALL
+    }
+}
 
 export const fetchRestaurants = (metaPage) => async (dispatch) => {
     let queryStr = "";
